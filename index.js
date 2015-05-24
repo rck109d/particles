@@ -6,8 +6,8 @@ var objectSize = 3; // drawSize of emitter/field
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
 
-canvas.width = document.documentElement.clientWidth;
-canvas.height = document.documentElement.clientHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 
 function addNewParticles() {
@@ -73,13 +73,13 @@ var midY = canvas.height / 2;
 
 // Add one emitter located at `{ x : 100, y : 230}` from the origin (top left)
 // that emits at a velocity of `2` shooting out from the right (angle `0`)
-var emitters = [new Emitter(new Vector(midX - 150, midY), Vector.fromAngle(6, 2), Math.PI)];
+var emitters = [new Emitter(new Vector(midX + 75, midY), Vector.fromAngle(6, 2), Math.PI)];
 
 // Add one field located at `{ x : 400, y : 230}` (to the right of our emitter)
 // that repels with a force of `140`
 var fields = [
-  new Field(new Vector(midX - 300, midY + 20), 900), 
-  new Field(new Vector(midX - 200, midY + 10), -50),
+  new Field(new Vector(midX - 75, midY + 20), 900), 
+  new Field(new Vector(midX - 25, midY + 10), -50),
 ];
 
 function loop() {
