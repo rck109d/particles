@@ -71,16 +71,16 @@ var particles = [];
 var midX = canvas.width / 2;
 var midY = canvas.height / 2; 
 
-// Add one emitter located at `{ x : 100, y : 230}` from the origin (top left)
-// that emits at a velocity of `2` shooting out from the right (angle `0`)
-var emitters = [new Emitter(new Vector(midX + 75, midY), Vector.fromAngle(6, 2), Math.PI)];
-
-// Add one field located at `{ x : 400, y : 230}` (to the right of our emitter)
-// that repels with a force of `140`
-var fields = [
-  new Field(new Vector(midX - 75, midY + 20), 900), 
-  new Field(new Vector(midX - 25, midY + 10), -50),
+var emitters = [
+  new Emitter(new Vector(midX + 50, midY), Vector.fromAngle(6, 2))
 ];
+ 
+var fields = [
+  new Field(new Vector(midX + 100, midY + 20), 150),
+  new Field(new Vector(midX - 100, midY + 20), 100),
+  new Field(new Vector(midX + 0, midY + 20), -20),
+];
+ 
 
 function loop() {
   clear();
