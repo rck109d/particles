@@ -13,7 +13,8 @@ Particle.prototype.submitToFields = function (fields) {
   var totalAccelerationY = 0;
 
   // for each passed field
-  for (var i = 0; i < fields.length; i++) {
+  var fieldsLength = fields.length;
+  for (var i = 0; i < fieldsLength; i++) {
     var field = fields[i];
 
     // find the distance between the particle and the field
@@ -29,7 +30,7 @@ Particle.prototype.submitToFields = function (fields) {
   }
 
   // update our particle's acceleration
-  this.acceleration = new Vector(totalAccelerationX, totalAccelerationY);
+  this.acceleration.set(totalAccelerationX, totalAccelerationY);
 };
 
 Particle.prototype.move = function () {

@@ -19,6 +19,11 @@ Vector.prototype.getAngle = function () {
   return Math.atan2(this.y,this.x);
 };
 
+Vector.prototype.set = function(x, y) {
+  this.x = x;
+  this.y = y;
+}
+
 Vector.fromAngle = function (angle, magnitude) {
   return new Vector(magnitude * Math.cos(angle), magnitude * Math.sin(angle));
 };

@@ -1,6 +1,6 @@
-var maxParticles = 20000;
+var maxParticles = 15000;
 var particleSize = 1;
-var emissionRate = 20;
+var emissionRate = 15000;
 var objectSize = 3; // drawSize of emitter/field
 
 var canvas = document.querySelector('canvas');
@@ -8,7 +8,6 @@ var ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 
 function addNewParticles() {
   // if we're at our max, stop emitting.
@@ -28,8 +27,9 @@ function addNewParticles() {
 function plotParticles(boundsX, boundsY) {
   // a new array to hold particles within our bounds
   var currentParticles = [];
-
-  for (var i = 0; i < particles.length; i++) {
+  
+  var particlesLength = particles.length;
+  for (var i = 0; i < particlesLength; i++) {
     var particle = particles[i];
     var pos = particle.position;
 
@@ -52,7 +52,8 @@ function plotParticles(boundsX, boundsY) {
 
 function drawParticles() {
   ctx.fillStyle = 'rgb(0,0,255)';
-  for (var i = 0; i < particles.length; i++) {
+  var particlesLength = particles.length;
+  for (var i = 0; i < particlesLength; i++) {
     var position = particles[i].position;
     ctx.fillRect(position.x, position.y, particleSize, particleSize);
   }
@@ -65,22 +66,21 @@ function drawCircle(object) {
   ctx.closePath();
   ctx.fill();
 }
- 
+
 var particles = []; 
 
 var midX = canvas.width / 2;
-var midY = canvas.height / 2; 
+var midY = canvas.height / 2;
 
 var emitters = [
   new Emitter(new Vector(midX + 50, midY), Vector.fromAngle(6, 2))
 ];
- 
+
 var fields = [
-  new Field(new Vector(midX + 100, midY + 20), 150),
-  new Field(new Vector(midX - 100, midY + 20), 100),
-  new Field(new Vector(midX + 0, midY + 20), -20),
+  new Field(new Vector(midX + 100, midY + 200), 700),
+  new Field(new Vector(midX - 100, midY + 20), 250),
+  new Field(new Vector(midX + 0, midY + 20), -20)
 ];
- 
 
 function loop() {
   clear();
