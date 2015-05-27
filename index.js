@@ -1,13 +1,17 @@
 var maxParticles = 15000;
 var particleSize = 1;
-var emissionRate = 15000;
+var emissionRate = 15000*0+1;
 var objectSize = 3; // drawSize of emitter/field
 
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function fitCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+fitCanvas();
+
 
 function addNewParticles() {
   // if we're at our max, stop emitting.
@@ -73,7 +77,7 @@ var midX = canvas.width / 2;
 var midY = canvas.height / 2;
 
 var emitters = [
-  new Emitter(new Vector(midX + 50, midY), Vector.fromAngle(6, 2))
+  //new Emitter(new Vector(midX + 50, midY), Vector.fromAngle(6, 2))
 ];
 
 var fields = [
@@ -109,3 +113,35 @@ function queue() {
 }
 
 loop();
+
+canvas.addEventListener('mousemove', function(e) {
+  var x = e.clientX;
+  var y = e.clientY;
+  
+});
+
+canvas.addEventListener('click', function(e) {
+  var which = e.which;
+  if(which === 1) {
+    var x = e.clientX;
+    var y = e.clientY;
+    //fields.push(new Field(new Vector(x, y), 250));
+    var newEmitter = new Emitter(new Vector(x, y), Vector.fromAngle(6, 2));
+    emitters.push(newEmitter);
+  } else if (e.which === 2) {
+    particles = [];
+  }
+});
+
+window.addEventListener('resize', function(e) {
+  fitCanvas();
+});
+
+window.addEventListener('keyup', function(e) {
+  var which = e.which;
+  switch(which) {
+    case 32: //space
+      emitters = [];
+      break;
+  }
+});
